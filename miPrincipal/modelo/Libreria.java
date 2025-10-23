@@ -24,95 +24,62 @@ public class Libreria{
 
     }
 
-    public boolean agregarLibro(Libro libro){
+    public void agregarLibro(){
         
-           listaLibros.agregar(libro);
-           return true;
+           
         
     }
 
-    public ListaDoble<Libro> obtenerLibros(){
-        return listaLibros;
-
-    }
-
-    public boolean agregarLibroCola(Libro libro){
-
-        colaLibros.encolar(libro);
-        return true;
-
-    }
-
-    public Libro obtenerLibroCola(){
-
-        return colaLibros.frente();
-        
-
-    }
-    public Libro obtenerLibroPila(){
-        return pilaLibrosEliminados.cima();
-    }
-
-    public Cola<Libro> mostrarReservaLibros(){
+    public void obtenerLibros(){
        
-        return colaLibros;
-
 
     }
 
-    public Libro crearLibro(String titulo, String autor, String isbn){
-        Libro libro = new Libro(titulo,autor,isbn);
-        return libro;
-    }
+    public void agregarLibroCola(){
 
-    public Pedido crearPedido(Libro libro, Fecha fecha){
-        Pedido pedido = new Pedido(libro, new Fecha());
-
-        return pedido;
-
-    }
-
-    public boolean devolverLibro(Libro libro) throws PosicionIlegalException{
-        listaLibros.remover(libro);
-        return true;
-
-    }
-
-    public Libro eliminarUltimoLibro() throws PosicionIlegalException{
-        if (listaLibros.esVacia()) {
-            return null;
-        } else {
-            Libro libroEliminado = listaLibros.remover(listaLibros.getTamanio()-1);
-             
-            pilaLibrosEliminados.apilar(libroEliminado);
-            return libroEliminado;
-        }
-
-    }
-
-    public Libro deshacerEliminarLibro(){
-        if (pilaLibrosEliminados.esVacia()) {
-            return null;
         
-        } else {
-            
-            Libro libroRestaurado = pilaLibrosEliminados.cima();
-            pilaLibrosEliminados.retirar();
-            listaLibros.agregar(libroRestaurado);
-            return libroRestaurado;
-        }
 
     }
 
-    public Libro buscarLibro(String isbn) throws PosicionIlegalException{
+    public void obtenerLibroCola(){
 
-        for(int i=0;i<listaLibros.getTamanio();i++){
-            if(isbn.equals(listaLibros.getValor(i).getIsbn())){
-                return listaLibros.getValor(i);
-            }
-        }
+       
         
-        return null; // Si no se encuentra el libro, devuelve null
+
+    }
+    public voic obtenerLibroPila(){
+        
+
+
+    }
+
+    public void crearLibro(){
+        
+    }
+
+    public void crearPedido(){
+        
+
+    }
+
+    public void devolverLibro() {
+       
+
+    }
+
+    public void eliminarUltimoLibro(){
+        
+
+    }
+
+    public void deshacerEliminarLibro(){
+        
+
+    }
+
+    public void buscarLibro(String isbn) {
+
+        
 
     }
 

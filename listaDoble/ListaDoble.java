@@ -34,7 +34,7 @@ public class ListaDoble<T>{
                 aux = aux.getSiguiente();
             }
             aux.setSiguiente(nuevo); 
-            nuevo.setAnterior(aux); //ESTA ES UNA LINEA NUEVA RESPECTO A LA LISTA SIMPLE
+            
         }
         tamanio++;
     }
@@ -49,7 +49,7 @@ public class ListaDoble<T>{
             Nodo<T> nuevo = new Nodo<>();
             nuevo.setValor(valor);
             if(pos==0){//insertar al principo
-                cabeza.setAnterior(nuevo); //NUEVA LINEA AGREGADA PARA LISTA DOBLE
+               
                 nuevo.setSiguiente(cabeza);
                 cabeza = nuevo;
 
@@ -60,7 +60,7 @@ public class ListaDoble<T>{
                         aux = aux.getSiguiente();
                     }
                     aux.setSiguiente(nuevo); 
-                    nuevo.setAnterior(aux); /// ESTA ES UNA NUEVA LINEA RESPECTO AL ANTERIOR
+                    
 
                 }else{ // en medio
                     Nodo<T> aux = cabeza;
@@ -71,8 +71,7 @@ public class ListaDoble<T>{
                     Nodo<T> siguiente = aux.getSiguiente();
                     aux.setSiguiente(nuevo);
                     nuevo.setSiguiente(siguiente);
-                    nuevo.setAnterior(aux); ///ESTA ES UNA NUEVA LINEA RESPECTO A LA LISTA SIMPLE
-                    siguiente.setAnterior(nuevo);///ESTA ES UNA NUEVA LINEA RESPECTO A LA LISTA SIMPLE
+                    
 
                 }
 
@@ -91,50 +90,7 @@ public class ListaDoble<T>{
      */
 
     public T remover(int pos) throws PosicionIlegalException{
-        if (pos >=0 && pos <tamanio){ //posicion correcta
-            if (pos ==0){
-                T valor = cabeza.getValor();
-                cabeza = cabeza.getSiguiente();
-                if (cabeza !=null)
-                    cabeza.setAnterior(null); ///ESTA ES UNA NUEVA LINEA QUE SE INSERTO
-                tamanio--;
-                return valor;
-            }else{ 
-                if (pos == tamanio-1){ //eliminar al final de la lista
-                    Nodo<T> aux = cabeza;
-                    for(int i=0;i<=pos-2;i++){ 
-                        aux = aux.getSiguiente();
-                    }
-                    T valor = aux.getSiguiente().getValor();
-                   
-                    Nodo<T> prox = aux.getSiguiente();
-                    aux.setSiguiente(prox.getSiguiente());
-                    tamanio--;
-                    return valor;
-
-                }else {
-                    //eliminar  en medio
-                    Nodo<T> aux = cabeza;
-                    for(int i=0;i<=pos-2;i++){
-                        aux = aux.getSiguiente();
-
-                    }
-                    T valor = aux.getSiguiente().getValor();
-                    Nodo<T> prox = aux.getSiguiente();
-                    
-                    prox.getSiguiente().setAnterior(aux);
-                    aux.setSiguiente(prox.getSiguiente());
-                    tamanio--;
-                    return valor;
-                }
-
-
-            }
-
-        }else{ //posicion incorrecta
-            throw new PosicionIlegalException();
-
-        }
+        
         
     }
      /*
@@ -144,19 +100,16 @@ public class ListaDoble<T>{
      * @throws PosicionIlegalException
      */
 
-    public int remover(T valor) throws PosicionIlegalException{
-        Nodo<T> aux = cabeza;
-        int pos = 0;
-        while (aux != null){
-            if(valor.equals(aux.getValor())){
-                remover(pos);
-                return pos;
-            }
-            aux = aux.getSiguiente();
-            pos++;
+    
+     /*
+      * Elimina un nodo de la lista buscandolo por su
+        valor, si lo encuentra retorna la posición y lo 
+        elimina,si no lo encuentra retorna -1
+    
 
-        }
-        return -1;
+      */
+     public int remover(T valor) throws PosicionIlegalException{
+        
        
         
     }
@@ -194,29 +147,22 @@ public class ListaDoble<T>{
         tamanio = 0;
     }
 
+    /*
+     * Regresa todos los datos de la lista en forma de String
+     */
+
     @Override
     public String toString() {
-        Nodo<T> aux = cabeza;
-        String cadena = "[ ";
-        while (aux !=null){
-            cadena = cadena +aux.getValor()+"\n";
-            aux = aux.getSiguiente();
-
-        }
-        cadena = cadena+" ]";
-        return cadena;
+       
 
     }
-
+    /*
+     * busca un valor en la lista
+     * @return true si contiene ese valor
+     * si no regresa false
+     */
     public boolean contiene(T valor){
-         Nodo<T> aux = cabeza;
-         while (aux !=null){
-            if (valor.equals(aux.getValor())){
-                return true;
-            }
-            aux = aux.getSiguiente();
-         }
-         return false;
+        
     }
     
     
